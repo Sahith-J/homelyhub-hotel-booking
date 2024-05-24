@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "../../CSS/Login.css";
-import { getLogin } from "../../Store/User/user-action";
+import { getLogin, guestLogin } from "../../Store/User/user-action"; // Import guestLogin action
 import { userActions } from "../../Store/User/user-slice";
 import LoadingSpinner from "../LoadingSpinner";
 
@@ -19,6 +19,10 @@ const Login = () => {
     dispatch(getLogin({ email, password }));
   };
 
+  const guestLoginHandler = () => {
+    dispatch(guestLogin()); // Dispatch guestLogin action
+  };
+
   useEffect(() => {
     if (errors && errors.length > 0) {
       toast.error(errors);
@@ -27,7 +31,7 @@ const Login = () => {
       navigate("/");
       toast.success("User has logged in successfully");
     }
-  }, [isAuthenticated, errors, navigate]);
+  }, [isAuthenticated, errors, navigate, dispatch]);
 
   return (
     <Fragment>
@@ -59,6 +63,7 @@ const Login = () => {
               </div>
               <Link to="/user/forgotpassword" className="float-right mb-4"> Forgot Password </Link>
               <button id="login_button" type="submit" className="loginbutton btn-block py-2 btn-danger"> LOGIN </button>
+              <button type="button" className="loginbutton btn-block py-2 btn-secondary mt-3" onClick={guestLoginHandler}> GUEST LOGIN </button>
               <Link to="/signup" className="float-right mt-3"> New user? </Link>
             </form>
           </div>
