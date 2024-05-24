@@ -132,7 +132,6 @@ This project is licensed under the MIT License.
 
 ## Acknowledgements
 
-- [Webstack Academy (WSA)](https://webstackacademy.com) for the internship opportunity.
 - [MERN Stack](https://www.mongodb.com/mern-stack) for the amazing technology stack.
 - [Stripe](https://stripe.com) for payment integration.
 - [Cloudinary](https://cloudinary.com) for image hosting services.
